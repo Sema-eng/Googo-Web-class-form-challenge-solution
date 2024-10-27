@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Challenge 4: Display Total Count of Form Submissions</h1>
+        <form id="submissionForm">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="mt-3">
+            <h5>Total Submissions: <span id="submissionCount">0</span></h5>
+        </div>
+    </div>
+
+    <script>
+        let submissionCount = 0;
+
+        document.getElementById('submissionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            submissionCount++; // Increment the counter
+            document.getElementById('submissionCount').innerText = submissionCount; // Update the display
+
+            // Optionally, you can clear the form inputs after submission
+            this.reset();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

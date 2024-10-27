@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Store Submitted Data and Display in List
+    </title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Challenge 2: Store Submitted Data and Display in List
+        </h1>
+        <form id="dataForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <h2 class="mt-4">Submitted Data</h2>
+        <ul id="dataList" class="list-group mt-3"></ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const dataForm = document.getElementById('dataForm');
+        const dataList = document.getElementById('dataList');
+        const submittedData = []; // Array to store submitted data
+
+        dataForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const name = document.getElementById('name').value; // Get the name value
+            const age = document.getElementById('age').value; // Get the age value
+            
+            // Store the data in the array
+            submittedData.push({ name, age });
+
+            // Update the list display
+            updateDataList();
+
+            // Clear the form fields
+            dataForm.reset();
+        });
+
+        function updateDataList() {
+            dataList.innerHTML = ''; // Clear the list before updating
+            submittedData.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = `${item.name}, ${item.age}`;
+                dataList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
